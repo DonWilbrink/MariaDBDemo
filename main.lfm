@@ -1,0 +1,123 @@
+object Form1: TForm1
+  Left = 342
+  Height = 643
+  Top = 250
+  Width = 779
+  Caption = 'Platen'
+  ClientHeight = 643
+  ClientWidth = 779
+  object DBNavigator1: TDBNavigator
+    Left = 32
+    Height = 25
+    Top = 27
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsDiscs
+    Options = []
+    TabOrder = 0
+  end
+  object DBGrid1: TDBGrid
+    Left = 32
+    Height = 224
+    Top = 72
+    Width = 712
+    Anchors = [akTop, akLeft, akRight]
+    Color = clWindow
+    Columns = <>
+    DataSource = dsDiscs
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+    TabOrder = 1
+  end
+  object DBGrid2: TDBGrid
+    Left = 32
+    Height = 277
+    Top = 352
+    Width = 712
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clWindow
+    Columns = <>
+    DataSource = dsTracks
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns, dgDblClickAutoSize]
+    TabOrder = 2
+  end
+  object btnWegschrijven: TButton
+    Left = 296
+    Height = 25
+    Top = 27
+    Width = 144
+    Caption = 'Wegschrijven'
+    OnClick = btnWegschrijvenClick
+    TabOrder = 3
+  end
+  object DBNavigator2: TDBNavigator
+    Left = 32
+    Height = 25
+    Top = 312
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = dsTracks
+    Options = []
+    TabOrder = 4
+  end
+  object conn: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=True'
+      'controls_cp=CP_UTF8'
+    )
+    Connected = True
+    HostName = 'localhost'
+    Port = 3006
+    Database = 'test_app'
+    User = 'pma_app'
+    Password = 'Super00Wil;'
+    Protocol = 'MariaDB-10'
+    LibraryLocation = '/usr/lib/x86_64-linux-gnu/libmysqlclient.so.21.2.30'
+    Left = 661
+    Top = 161
+  end
+  object tblDiscs: TZTable
+    Connection = conn
+    Active = True
+    TableName = 'discs'
+    Left = 664
+    Top = 232
+  end
+  object dsDiscs: TDataSource
+    DataSet = tblDiscs
+    Left = 664
+    Top = 304
+  end
+  object tblTracks: TZTable
+    Connection = conn
+    Active = True
+    TableName = 'tracks'
+    MasterFields = 'ID'
+    MasterSource = dsDiscs
+    LinkedFields = 'Disc_fk'
+    Left = 664
+    Top = 392
+  end
+  object dsTracks: TDataSource
+    DataSet = tblTracks
+    Left = 664
+    Top = 469
+  end
+end
