@@ -86,8 +86,8 @@ object Form1: TForm1
     HostName = 'localhost'
     Port = 3006
     Database = 'test_app'
-    User = 'pma_app'
-    Password = 'Super00Wil;'
+    User = 'user'
+    Password = 'password'
     Protocol = 'MariaDB-10'
     LibraryLocation = '/usr/lib/x86_64-linux-gnu/libmysqlclient.so.21.2.30'
     Left = 661
