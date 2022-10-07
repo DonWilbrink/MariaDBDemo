@@ -24,6 +24,8 @@ type
     tblDiscs: TZTable;
     tblTracks: TZTable;
     procedure btnWegschrijvenClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -43,6 +45,20 @@ procedure TForm1.btnWegschrijvenClick(Sender: TObject);
 begin
   tblDiscs.ApplyUpdates;
   tblTracks.ApplyUpdates;
+end;
+
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  tblTracks.Active := False;
+  tblDiscs.Active := False;
+  conn.Connected := False;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  conn.Connected := True;
+  tblDiscs.Active := True;
+  tblTracks.Active := True;
 end;
 
 end.
