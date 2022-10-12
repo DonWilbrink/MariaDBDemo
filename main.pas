@@ -35,6 +35,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure frDesigner1LoadReport(Report: TfrReport; var ReportName: String);
     procedure tblDiscsAfterPost(DataSet: TDataSet);
     procedure tblTracksAfterPost(DataSet: TDataSet);
   private
@@ -122,6 +123,12 @@ begin
   conn.Connected := True;
   tblDiscs.Active := True;
   tblTracks.Active := True;
+end;
+
+procedure TForm1.frDesigner1LoadReport(Report: TfrReport; var ReportName: String
+  );
+begin
+
 end;
 
 procedure TForm1.tblDiscsAfterPost(DataSet: TDataSet);
