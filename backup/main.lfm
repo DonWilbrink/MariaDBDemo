@@ -1,0 +1,163 @@
+object Form1: TForm1
+  Left = 342
+  Height = 804
+  Top = 250
+  Width = 974
+  Caption = 'Platen'
+  ClientHeight = 804
+  ClientWidth = 974
+  DesignTimePPI = 120
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  object DBNavigator1: TDBNavigator
+    Left = 40
+    Height = 31
+    Top = 34
+    Width = 301
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 31
+    ClientWidth = 301
+    DataSource = dsDiscs
+    Options = []
+    TabOrder = 0
+  end
+  object DBGrid1: TDBGrid
+    Left = 40
+    Height = 280
+    Top = 90
+    Width = 890
+    Anchors = [akTop, akLeft, akRight]
+    Color = clWindow
+    Columns = <>
+    DataSource = dsDiscs
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+    TabOrder = 1
+  end
+  object DBGrid2: TDBGrid
+    Left = 40
+    Height = 346
+    Top = 440
+    Width = 890
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clWindow
+    Columns = <>
+    DataSource = dsTracks
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns, dgDblClickAutoSize]
+    TabOrder = 2
+  end
+  object DBNavigator2: TDBNavigator
+    Left = 40
+    Height = 31
+    Top = 390
+    Width = 301
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 31
+    ClientWidth = 301
+    DataSource = dsTracks
+    Options = []
+    TabOrder = 3
+  end
+  object Button1: TButton
+    Left = 393
+    Height = 33
+    Top = 32
+    Width = 94
+    Caption = 'Editing'
+    OnClick = Button1Click
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 520
+    Height = 33
+    Top = 32
+    Width = 94
+    Caption = 'Preview'
+    OnClick = Button2Click
+    TabOrder = 5
+  end
+  object Button3: TButton
+    Left = 656
+    Height = 31
+    Top = 32
+    Width = 94
+    Caption = 'Print...'
+    OnClick = Button3Click
+    TabOrder = 6
+  end
+  object conn: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=True'
+      'controls_cp=CP_UTF8'
+    )
+    Connected = True
+    HostName = 'localhost'
+    Port = 3006
+    Database = 'C:\Users\donwi\OneDrive\Documenten\GitHub\MariaDBDemo\platen.db'
+    Protocol = 'sqlite-3'
+    Left = 826
+    Top = 201
+  end
+  object tblDiscs: TZTable
+    Connection = conn
+    AfterPost = tblDiscsAfterPost
+    TableName = 'discs'
+    Left = 830
+    Top = 290
+  end
+  object dsDiscs: TDataSource
+    DataSet = tblDiscs
+    Left = 830
+    Top = 380
+  end
+  object tblTracks: TZTable
+    Connection = conn
+    AfterPost = tblTracksAfterPost
+    TableName = 'tracks'
+    MasterFields = 'ID'
+    MasterSource = dsDiscs
+    LinkedFields = 'Disc_fk'
+    Left = 830
+    Top = 490
+  end
+  object dsTracks: TDataSource
+    DataSet = tblTracks
+    Left = 830
+    Top = 586
+  end
+  object frDBDataSet1: TfrDBDataSet
+    DataSet = tblDiscs
+    Left = 680
+    Top = 288
+  end
+  object frReport1: TfrReport
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    Left = 680
+    Top = 121
+  end
+  object frDesigner1: TfrDesigner
+    Left = 680
+    Top = 201
+  end
+  object PrintDialog1: TPrintDialog
+    Left = 829
+    Top = 121
+  end
+end
