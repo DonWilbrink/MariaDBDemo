@@ -17,7 +17,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="123"/>
+        <TopLine Value="118"/>
         <CursorPos X="6" Y="135"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
@@ -35,6 +35,13 @@
         <UnitName Value="Lazarus"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="main.lfm"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="21">
